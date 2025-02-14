@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Settings - Rexo Trader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>User Settings</h2>
+
+        <form id="settingsForm">
+            <!-- Theme Selection -->
+            <label for="themeSelector">Choose Theme:</label>
+            <select id="themeSelector" onchange="changeTheme()">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+            <br><br>
+
+            <!-- Notification Preferences -->
+            <label for="notificationSettings">Enable Notifications:</label>
+            <input type="checkbox" id="notificationSettings" checked>
+            <br><br>
+
+            <button type="button" class="btn" onclick="saveSettings()">Save Settings</button>
+        </form>
+
+        <div id="statusMessage" class="status-message hidden"></div>
+    </div>
+
+    <script>
+        // Change theme dynamically
+        function changeTheme() {
+            const theme = document.getElementById('themeSelector').value;
+            if (theme === 'dark') {
+                document.body.classList.add('dark-theme');
+                document.body.classList.remove('light-theme');
+            } else {
+                document.body.classList.add('light-theme');
+                document.body.classList.remove('dark-theme');
+            }
+        }
+
+        // Save settings and show a success message
+        function saveSettings() {
+            const theme = document.getElementById('themeSelector').value;
+            const notificationsEnabled = document.getElementById('notificationSettings').checked;
+
+            // Simulate saving settings (can be expanded for actual server-side functionality)
+            console.log(`Theme: ${theme}, Notifications Enabled: ${notificationsEnabled}`);
+
+            // Show success message
+            document.getElementById('statusMessage').innerText = 'Settings have been saved successfully!';
+            document.getElementById('statusMessage').classList.remove('hidden');
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Portfolio - Rexo Trader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Your Portfolio</h2>
+        
+        <p>Below are the details of your portfolio:</p>
+
+        <!-- Portfolio Table -->
+        <table id="portfolioTable">
+            <thead>
+                <tr>
+                    <th>Commodity</th>
+                    <th>Units</th>
+                    <th>Unit Value (USD)</th>
+                    <th>Total Value (USD)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Gold</td>
+                    <td>10</td>
+                    <td>1800</td>
+                    <td>18000</td>
+                    <td><button class="btn" onclick="viewDetails('Gold')">View Details</button></td>
+                </tr>
+                <tr>
+                    <td>Silver</td>
+                    <td>50</td>
+                    <td>25</td>
+                    <td>1250</td>
+                    <td><button class="btn" onclick="viewDetails('Silver')">View Details</button></td>
+                </tr>
+                <tr>
+                    <td>Oil</td>
+                    <td>30</td>
+                    <td>60</td>
+                    <td>1800</td>
+                    <td><button class="btn" onclick="viewDetails('Oil')">View Details</button></td>
+                </tr>
+                <!-- Add more commodities dynamically if needed -->
+            </tbody>
+        </table>
+
+        <div id="portfolioDetails" class="hidden">
+            <h3>Commodity Details</h3>
+            <p id="commodityDetails"></p>
+            <button class="btn" onclick="closeDetails()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to view details of a commodity
+        function viewDetails(commodity) {
+            const details = {
+                'Gold': 'Gold is a precious metal with a high value. It is often used as a hedge against inflation.',
+                'Silver': 'Silver is another precious metal with a variety of uses, including in electronics and jewelry.',
+                'Oil': 'Oil is a critical global resource used for energy and various industrial applications.',
+                // Add details for other commodities as needed
+            };
+
+            const detailText = details[commodity] || 'Details not available for this commodity.';
+            document.getElementById('commodityDetails').innerText = detailText;
+            document.getElementById('portfolioTable').style.display = 'none'; // Hide the portfolio table
+            document.getElementById('portfolioDetails').classList.remove('hidden'); // Show commodity details
+        }
+
+        // Function to close the commodity details view
+        function closeDetails() {
+            document.getElementById('portfolioTable').style.display = 'block'; // Show the portfolio table
+            document.getElementById('portfolioDetails').classList.add('hidden'); // Hide commodity details
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rexo Trader</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+</head>
+<body>
+
+
+    <a href="./login.html"><button class="btn" onclick="showDashboard()">Login</button></a>
+    <a href="./signup.html"><button class="btn" onclick="showDashboard()">Sign Up</button></a>
+
+
+
+    <!-- Dashboard Container -->
+<div class="dashboard-container hidden" id="dashboard-container">
+    <div class="sidebar">
+        <h2>Rexo Trader</h2>
+        <button class="sidebar-btn" onclick="showSection('market-analysis')">Dashboard</button>
+        <button class="sidebar-btn" onclick="showSection('trade-now')">Trade Now</button>
+        <button class="sidebar-btn" onclick="showSection('watchlist')">Watchlist</button>
+        <button class="sidebar-btn" onclick="showSection('portfolio')">Portfolio</button>
+        <button class="sidebar-btn" onclick="showSection('deposit')">Deposit Funds</button>
+        <button class="sidebar-btn" onclick="showSection('withdraw')">Withdraw Funds</button>
+        <button class="sidebar-btn" onclick="showSection('account')">My Account</button>
+        <button class="sidebar-btn" onclick="showSection('settings')">Settings</button>
+    </div>
+    <div class="content" id="content">
+        <div id="market-analysis">
+            <h3>Live Forex Market Chart</h3>
+            <div class="tradingview-widget-container">
+                <div id="tradingview_chart"></div>
+            </div>
+        </div>
+        <div id="market-analysis">
+            <h3>Live Forex Market Chart</h3>
+        
+            <!-- Dropdown to Select Currency Pair -->
+            <label for="currencySelector">Select Currency Pair:</label>
+            <select id="currencySelector">
+                <option value="EUR/USD">EUR/USD</option>
+                <option value="GBP/USD">GBP/USD</option>
+                <option value="USD/JPY">USD/JPY</option>
+                <option value="USD/CAD">USD/CAD</option>
+                <option value="AUD/USD">AUD/USD</option>
+                <option value="NZD/USD">NZD/USD</option>
+                <option value="USD/INR">USD/INR</option>
+                <option value="EUR/INR">EUR/INR</option>
+                <option value="GBP/INR">GBP/INR</option>
+                <option value="AUD/INR">AUD/INR</option>
+            </select>
+        
+            <div id="trade-now" class="hidden">
+                <h2>Trade Now</h2>
+                <p>Balance: <span id="balance">10,000 USD</span></p>
+                
+                <label for="currencySelector">Select Currency Pair:</label>
+                <select id="currencySelector">
+                    <option value="EUR/USD">EUR/USD</option>
+                    <option value="GBP/USD">GBP/USD</option>
+                    <option value="USD/JPY">USD/JPY</option>
+                    <option value="USD/CAD">USD/CAD</option>
+                    <option value="AUD/USD">AUD/USD</option>
+                    <option value="NZD/USD">NZD/USD</option>
+                    <option value="USD/INR">USD/INR</option>
+                    <option value="EUR/INR">EUR/INR</option>
+                    <option value="GBP/INR">GBP/INR</option>
+                    <option value="AUD/INR">AUD/INR</option>
+                </select>
+                <br><br>
+            
+                <div id="trade-options">
+                    <button class="btn" onclick="buyCurrency()">Buy</button>
+                    <button class="btn" onclick="sellCurrency()">Sell</button>
+                </div>
+                <br>
+                <br>
+
+                <button onclick="window.location.href='Commodity Trading.html'">🛒 Commodity Trading</button>
+
+
+                
+                <h3>Transaction History</h3>
+                <ul id="historyList"></ul>
+            </div>
+        </div>
+        
+        <div id="watchlist" class="hidden">
+            <h2>Trader Watchlist</h2>
+            <ul id="watchlist-content">
+                <li>EUR/USD</li>
+                <li>GBP/USD</li>
+                <li>USD/JPY</li>
+                <li>AUD/USD</li>
+            </ul>
+        </div>
+        
+        <div id="portfolio" class="hidden">
+            <h2>Your Portfolio</h2>
+            <p>Details About Your Trading Portfolio</p>
+            <ul id="portfolioList">
+                <!-- Portfolio items will be dynamically added here -->
+            </ul>
+        </div>
+
+        <!-- Deposit Funds Section -->
+        <div id="deposit" class="hidden">
+            <h3>Deposit Funds</h3>
+            <p>Enter your deposit amount below:</p>
+            <input type="number" id="depositAmount" placeholder="Enter amount">
+            <button class="btn" onclick="handleDeposit()">Deposit</button>
+        </div>
+
+        <!-- Withdraw Funds Section -->
+
+        <div id="withdraw" class="hidden">
+            <h3>Withdraw Funds</h3>
+            <p>the withdrawal amount below:</p>
+            <input type="number" id="withdrawAmount" placeholder="Enter amount">
+            <button class="btn" onclick="handleWithdraw()">Withdraw</button>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- My Account Section -->
+            <div id="account" class="hidden">
+                <h3>Account Details</h3>
+                <p>Here are your account details:</p>
+                <div>
+                    <strong>Username:</strong> <span id="accountUsername">Vishnu</span>
+                </div>
+                <div>
+                    <strong>Email:</strong> <span id="accountEmail">vishnu@gmail.com</span>
+                </div>
+                <div>
+                    <strong>Balance:</strong> <span id="accountBalance">10,000 USD</span>
+                </div>
+                <br>
+                <button class="btn" onclick="editAccountSettings()">Edit Account Settings</button>
+                <br>
+                <h4>Settings</h4>
+            </div>
+        </div>
+
+        <!-- Settings Section -->
+        <div id="settings" class="hidden">
+            <h3>User Settings</h3>
+            <p>Here you can modify your preferences:</p>
+        
+            <label for="themeSelector">Choose Theme:</label>
+            <select id="themeSelector">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+            <br>
+            <br>
+            <label for="notificationSettings">Notifications:</label>
+            <input type="checkbox" id="notificationSettings"> Enable Notifications
+            <br>
+            <br>
+            <button class="btn" onclick="saveSettings()">Save Settings</button>
+        </div>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            new TradingView.widget({
+                "container_id": "tradingview_chart",
+                "width": "100%",
+                "height": "500",
+                "symbol": "",
+                "interval": "D",
+                "timezone": "Etc/UTC",
+                "theme": "dark",
+                "style": "1",
+                "locale": "en",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "hide_top_toolbar": false,
+                "hide_legend": false,
+                "save_image": false
+            });
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

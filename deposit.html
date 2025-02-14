@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Funds - Rexo Trader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Deposit Funds</h2>
+        
+        <p>Enter the amount you wish to deposit:</p>
+        <input type="number" id="depositAmount" placeholder="Enter amount to deposit" required>
+        <button class="btn" onclick="handleDeposit()">Deposit</button>
+
+        <div id="depositStatus" class="status-message"></div>
+    </div>
+
+    <script>
+        function handleDeposit() {
+            const amount = document.getElementById('depositAmount').value;
+            if (amount > 0) {
+                document.getElementById('depositStatus').innerHTML = `Successfully deposited ${amount} USD!`;
+                // Add further logic for handling the deposit, like updating the balance in the system
+            } else {
+                alert('Please enter a valid deposit amount.');
+            }
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

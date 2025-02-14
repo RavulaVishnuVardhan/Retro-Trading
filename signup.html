@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Rexo Trader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" id="signup-container">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <br><br>
+            <input type="email" id="email" placeholder="Email" required>
+            <br><br>
+            <input type="text" id="phone" placeholder="Phone Number" required>
+            <br><br>
+            <input type="password" id="password" placeholder="Password" required>
+            <br><br>
+            <input type="text" id="otp" placeholder="Enter OTP" required>
+            <br><br>
+            <button type="button" class="btn" onclick="signUp()">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+
+    <script>
+        function signUp() {
+            // Simulate signup functionality
+            alert("Sign up successful!");
+            window.location.href = "login.html"; // Redirect to login page
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

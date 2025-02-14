@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Now - Rexo Trader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Trade Now</h2>
+        
+        <p>Balance: <span id="balance">10,000 USD</span></p>
+
+        <label for="currencySelector">Select Currency Pair:</label>
+        <select id="currencySelector">
+            <option value="EUR/USD">EUR/USD</option>
+            <option value="GBP/USD">GBP/USD</option>
+            <option value="USD/JPY">USD/JPY</option>
+            <option value="USD/CAD">USD/CAD</option>
+            <option value="AUD/USD">AUD/USD</option>
+            <option value="NZD/USD">NZD/USD</option>
+            <option value="USD/INR">USD/INR</option>
+            <option value="EUR/INR">EUR/INR</option>
+            <option value="GBP/INR">GBP/INR</option>
+            <option value="AUD/INR">AUD/INR</option>
+        </select>
+        <br><br>
+
+        <div id="trade-options">
+            <button class="btn" onclick="buyCurrency()">Buy</button>
+            <button class="btn" onclick="sellCurrency()">Sell</button>
+            <br><br>
+            <button onclick="window.location.href='Commodity Trading.html'">🛒 Commodity Trading</button>
+        </div>
+
+        <h3>Transaction History</h3>
+        <ul id="historyList"></ul>
+    </div>
+
+    <script>
+        function buyCurrency() {
+            alert('Buy action triggered');
+            // Handle buying logic here
+        }
+
+        function sellCurrency() {
+            alert('Sell action triggered');
+            // Handle selling logic here
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

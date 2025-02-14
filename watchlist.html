@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watchlist - Rexo Trader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Trader Watchlist</h2>
+        
+        <ul id="watchlist-content">
+            <li>EUR/USD</li>
+            <li>GBP/USD</li>
+            <li>USD/JPY</li>
+            <li>AUD/USD</li>
+        </ul>
+
+        <button class="btn" onclick="addToWatchlist()">Add Currency Pair</button>
+    </div>
+
+    <script>
+        function addToWatchlist() {
+            const newCurrency = prompt('Enter the currency pair you want to add (e.g., USD/INR):');
+            if (newCurrency) {
+                const listItem = document.createElement('li');
+                listItem.textContent = newCurrency;
+                document.getElementById('watchlist-content').appendChild(listItem);
+            }
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
